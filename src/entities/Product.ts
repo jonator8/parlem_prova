@@ -2,11 +2,12 @@ import {
     BaseEntity,
     Column,
     CreateDateColumn,
-    Entity,
+    Entity, OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from 'typeorm';
 import {TypeEnum} from "../enums/ProductEnum";
+import {CustomerProduct} from "./CustomerProduct";
 
 
 @Entity()
@@ -20,6 +21,9 @@ export class Product extends BaseEntity {
 
     @Column({type: 'varchar',  nullable: false})
     type: TypeEnum;
+
+    @OneToMany(type => CustomerProduct, customerProduct => customerProduct.product)
+    customerProducts: CustomerProduct[];
 
     @CreateDateColumn()
     createdAt: 'string';

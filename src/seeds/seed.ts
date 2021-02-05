@@ -7,6 +7,7 @@ import {Customer} from "../entities/Customer";
 import {DocTypeEnum} from "../enums/CustomerEnum";
 import {Product} from "../entities/Product";
 import {TypeEnum} from "../enums/ProductEnum";
+import {CustomerProduct} from "../entities/CustomerProduct";
 
 (async () => {
     console.info('Beginning task.');
@@ -62,9 +63,33 @@ import {TypeEnum} from "../enums/ProductEnum";
 
 
     customers = await conn.getRepository(Customer).save(customers);
-    products = await conn.getRepository(Product).save(products);
     console.info('Customers saved:',  customers);
+    products = await conn.getRepository(Product).save(products);
     console.info('Products saved:',  products);
+
+    let customerProducts = [
+        new CustomerProduct({
+            customer: customers[0],
+            product: products[0],
+            soldAt: new Date(),
+            numeracioTerminal: 123456789
+        }),
+        new CustomerProduct({
+            customer: customers[1],
+            product: products[1],
+            soldAt: new Date(),
+            numeracioTerminal: 123456789
+        }),
+        new CustomerProduct({
+            customer: customers[1],
+            product: products[3],
+            soldAt: new Date(),
+            numeracioTerminal: 123456789
+        }),
+    ];
+
+    customerProducts = await conn.getRepository(CustomerProduct).save(customerProducts);
+    console.info('Customer products saved:',  customerProducts);
 
     // Close connection
     await conn.close();

@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 
 import {DocTypeEnum} from "../enums/CustomerEnum";
+import {CustomerProduct} from "./CustomerProduct";
 
 
 @Entity()
@@ -38,8 +39,8 @@ export class Customer extends BaseEntity {
     @Column({type: 'varchar', length:9,  nullable: false})
     phone: number;
 
-    // @OneToMany(type => UserBadge, userBadge => userBadge.badge)
-    // userBadges: UserBadge[];
+    @OneToMany(type => CustomerProduct, customerProduct => customerProduct.customer)
+    customerProducts: CustomerProduct[];
 
     @CreateDateColumn()
     createdAt: 'string';
