@@ -5,6 +5,8 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import {Customer} from "../entities/Customer";
 import {DocTypeEnum} from "../enums/CustomerEnum";
+import {Product} from "../entities/Product";
+import {TypeEnum} from "../enums/ProductEnum";
 
 (async () => {
     console.info('Beginning task.');
@@ -13,17 +15,56 @@ import {DocTypeEnum} from "../enums/CustomerEnum";
     console.info('PG connected.');
 
     // Create seed data.
-    let customer = new Customer({
-        docType: DocTypeEnum.dni,
-        docNum: '11223344E',
-        email: 'it@parlem.com',
-        givenName: 'Enriqueta',
-        familyName1: "Parlem",
-        phone: 668668668
-    });
+    let customers = [
+        new Customer({
+            docType: DocTypeEnum.dni,
+            docNum: '11223344E',
+            email: 'it@parlem.com',
+            givenName: 'Enriqueta',
+            familyName1: "Parlem",
+            phone: 668668668
+        }),
+        new Customer({
+            docType: DocTypeEnum.nie,
+            docNum: 'X0523821F',
+            email: 'it@parlem.com',
+            givenName: 'Joan',
+            familyName1: "Ferrer",
+            phone: 668668668
+        }),
+        new Customer({
+            docType: DocTypeEnum.nif,
+            docNum: 'X1234567E',
+            email: 'it@parlem.com',
+            givenName: 'Andreu',
+            familyName1: "Godo",
+            phone: 668668668
+        }),
+    ];
+    let products = [
+        new Product({
+            name: "Fibra 100 Adamo",
+            type: TypeEnum.ftth
+        }),
+        new Product({
+            name: "Fibra 10 Adamo",
+            type: TypeEnum.fttt
+        }),
+        new Product({
+            name: "Fibra 50 Adamo",
+            type: TypeEnum.fttf
+        }),
+        new Product({
+            name: "Movil 10",
+            type: TypeEnum.mttt
+        })
+    ];
 
-    customer = await conn.getRepository(Customer).save(customer); // re-assign to know assigned id
-    console.info('Customer saved.',  customer);
+
+    customers = await conn.getRepository(Customer).save(customers);
+    products = await conn.getRepository(Product).save(products);
+    console.info('Customers saved:',  customers);
+    console.info('Products saved:',  products);
 
     // Close connection
     await conn.close();

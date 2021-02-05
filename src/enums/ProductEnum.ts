@@ -1,5 +1,6 @@
 export enum TypeEnum {
-    ftth = "ftth",
-    fttf = "fttf",
-    fttt = "fttt"
+    ftth = 'ftth',
+    fttf = 'fttf',
+    fttt = 'fttt',
+    mttt = 'mttt'
 }
