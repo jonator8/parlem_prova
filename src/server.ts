@@ -1,1 +1,14 @@
-console.log("Application is up and running");
+import express from "express"
+
+// create and setup express app
+const app = express();
+
+const port = 3000;
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+});
+
+// start express server
+app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+});
