@@ -1,0 +1,20 @@
+# Node Modules
+node_modules
+
+# IDE Files
+.idea/*
+
+# dist Files
+dist/*
+
+# ORM config
+ormconfig.json
+
+# ORM Logs
+ormlogs.log
+
+#docker data
+docker/postgresql
+
+# Env File
+.env
