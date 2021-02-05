@@ -37,7 +37,8 @@ class ProductController {
     }
 
     public async createProduct(req: express.Request, res: express.Response) {
-        const product = await createProduct(req.body);
+        const product = await createProduct(req.body)
+            .catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: product});
     }
 

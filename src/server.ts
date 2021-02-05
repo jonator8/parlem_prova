@@ -1,4 +1,5 @@
 import express from "express"
+import bodyParser from "body-parser";
 import {createConnection} from "typeorm";
 import {getAppControllers} from "./controllers";
 
@@ -6,11 +7,10 @@ createConnection().then(connection => {
     // create and setup express app
     const app = express();
 
-    const port = process.env.PORT || 3000;
+    // parse application/json
+    app.use(bodyParser.json());
 
-    app.get('/', (req, res) => {
-        res.send('Hello World!')
-    });
+    const port = process.env.PORT || 3000;
 
     getAppControllers().then((controllers) => {
         controllers.map((controller) => {
