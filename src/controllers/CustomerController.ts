@@ -1,4 +1,11 @@
 import express from 'express';
+import {
+    getAllCustomers,
+    getCustomer,
+    deleteCustomer,
+    createCustomer,
+    updateCustomer
+} from "../services/CustomerService";
 
 class CustomerController {
     public path = '/customers';
@@ -20,28 +27,28 @@ class CustomerController {
     }
 
     public async getAllCustomers (req: express.Request, res: express.Response) {
-        // const response = await getAllCustomers().catch((err) => res.status(400).json({message: err}));
-        return res.status(200).json({data: {message:"hi"}});
+        const response = await getAllCustomers().catch((err) => res.status(400).json({message: err}));
+        return res.status(200).json({data: response});
     }
 
     public async deleteCustomer(req: express.Request, res: express.Response) {
-        // const Customer = await deleteCustomer(req.params.id);
-        // return res.status(200).json({data: Customer});
+        const customer = await deleteCustomer(req.params.id);
+        return res.status(200).json({data: customer});
     }
 
     public async createCustomer(req: express.Request, res: express.Response) {
-        // const customer = await createCustomer(req.body);
-        // return res.status(200).json({data: customer});
+        const customer = await createCustomer(req.body);
+        return res.status(200).json({data: customer});
     }
 
     public async updateCustomer(req: express.Request, res: express.Response) {
-        // const customer = await updateCustomer(req.params.id, req.body);
-        // return res.status(200).json({data: customer});
+        const customer = await updateCustomer(req.params.id, req.body);
+        return res.status(200).json({data: customer});
     }
 
     public async getCustomer(req: express.Request, res: express.Response) {
-        // const customer = await getCustomer(req.params.id);
-        // return res.status(200).json({data: customer });
+        const customer = await getCustomer(req.params.id);
+        return res.status(200).json({data: customer });
     }
 }
 
