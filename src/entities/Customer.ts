@@ -7,6 +7,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn
 } from 'typeorm';
+
 import {DocTypeEnum} from "../enums/CustomerEnum";
 
 
@@ -23,12 +24,15 @@ export class Customer extends BaseEntity {
     docNum: string;
 
     @Column({type: 'varchar', length:36,  nullable: false})
+    email: string;
+
+    @Column({type: 'varchar', length:36,  nullable: false})
     givenName: string;
 
     @Column({type: 'varchar', length:36,  nullable: false})
     familyName1: string;
 
-    @Column({type: 'varchar', length:36,  nullable: false})
+    @Column({type: 'varchar', length:36,  nullable: true})
     familyName2: string;
 
     @Column({type: 'varchar', length:9,  nullable: false})
