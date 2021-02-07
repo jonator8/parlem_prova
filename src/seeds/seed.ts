@@ -31,7 +31,7 @@ import {CustomerProduct} from "../entities/CustomerProduct";
             email: 'it@parlem.com',
             givenName: 'Joan',
             familyName1: "Ferrer",
-            phone: 668668668
+            phone: 675428968
         }),
         new Customer({
             docType: DocTypeEnum.nif,
@@ -39,7 +39,7 @@ import {CustomerProduct} from "../entities/CustomerProduct";
             email: 'it@parlem.com',
             givenName: 'Andreu',
             familyName1: "Godo",
-            phone: 668668668
+            phone: 642559632
         }),
     ];
     let products = [
@@ -78,13 +78,12 @@ import {CustomerProduct} from "../entities/CustomerProduct";
             customer: customers[1],
             product: products[1],
             soldAt: new Date(),
-            numeracioTerminal: 123456789
+            numeracioTerminal: 987654321
         }),
         new CustomerProduct({
             customer: customers[1],
             product: products[3],
-            soldAt: new Date(),
-            numeracioTerminal: 123456789
+            soldAt: new Date()
         }),
     ];
 
