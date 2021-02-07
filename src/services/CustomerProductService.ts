@@ -27,7 +27,7 @@ export async function updateCustomerProduct(id, body) {
 
 export async function getCustomerProducts(idCustomer) {
     return await getConnection().getRepository(CustomerProduct).find({
-        relations:['product', 'customer'],
+        relations:['product'],
         where:{customer: idCustomer}
     });
 }
