@@ -4,7 +4,8 @@ import {
     getCustomer,
     deleteCustomer,
     createCustomer,
-    updateCustomer
+    updateCustomer,
+    getCustomerProducts
 } from "../services/CustomerService";
 
 class CustomerController {
@@ -24,6 +25,7 @@ class CustomerController {
 
         // OTHERS
         this.router.get(this.path+'/:id', this.getCustomer);
+        this.router.get(this.path+'/:id/products', this.getCustomerProducts);
     }
 
     public async getAllCustomers (req: express.Request, res: express.Response) {
@@ -48,6 +50,11 @@ class CustomerController {
 
     public async getCustomer(req: express.Request, res: express.Response) {
         const customer = await getCustomer(req.params.id);
+        return res.status(200).json({data: customer });
+    }
+
+    public async getCustomerProducts(req: express.Request, res: express.Response) {
+        const customer = await getCustomerProducts(req.params.id);
         return res.status(200).json({data: customer });
     }
 }

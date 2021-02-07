@@ -25,7 +25,7 @@ export async function updateCustomerProduct(id, body) {
     return await repository.save(customerProduct);
 }
 
-export async function getCustomerProducts(idCustomer) {
+export async function getCustomerProductsByCustomer(idCustomer) {
     return await getConnection().getRepository(CustomerProduct).find({
         relations:['product'],
         where:{customer: idCustomer}

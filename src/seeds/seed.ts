@@ -1,5 +1,3 @@
-// Code used to seed the database.
-// Must be at top
 import 'reflect-metadata';
 
 import { createConnection } from 'typeorm';
@@ -28,7 +26,7 @@ import {CustomerProduct} from "../entities/CustomerProduct";
         new Customer({
             docType: DocTypeEnum.nie,
             docNum: 'X0523821F',
-            email: 'it@parlem.com',
+            email: 'juanito66@gmail.com',
             givenName: 'Joan',
             familyName1: "Ferrer",
             phone: 675428968
@@ -36,7 +34,7 @@ import {CustomerProduct} from "../entities/CustomerProduct";
         new Customer({
             docType: DocTypeEnum.nif,
             docNum: 'X1234567E',
-            email: 'it@parlem.com',
+            email: 'andreu.godo@hotmail.com',
             givenName: 'Andreu',
             familyName1: "Godo",
             phone: 642559632
@@ -63,9 +61,9 @@ import {CustomerProduct} from "../entities/CustomerProduct";
 
 
     customers = await conn.getRepository(Customer).save(customers);
-    console.info('Customers saved:',  customers);
+    console.info('Customers saved');
     products = await conn.getRepository(Product).save(products);
-    console.info('Products saved:',  products);
+    console.info('Products saved');
 
     let customerProducts = [
         new CustomerProduct({
@@ -88,7 +86,7 @@ import {CustomerProduct} from "../entities/CustomerProduct";
     ];
 
     customerProducts = await conn.getRepository(CustomerProduct).save(customerProducts);
-    console.info('Customer products saved:',  customerProducts);
+    console.info('Customer products saved');
 
     // Close connection
     await conn.close();
