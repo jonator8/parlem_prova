@@ -6,7 +6,6 @@ import {
     createCustomerProduct,
     updateCustomerProduct
 } from "../services/CustomerProductService";
-import CustomerController from "./CustomerController";
 
 class CustomerProductController {
     public path = '/customersproducts';
