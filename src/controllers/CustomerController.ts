@@ -34,27 +34,27 @@ class CustomerController {
     }
 
     public async deleteCustomer(req: express.Request, res: express.Response) {
-        const customer = await deleteCustomer(req.params.id);
+        const customer = await deleteCustomer(req.params.id).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer});
     }
 
     public async createCustomer(req: express.Request, res: express.Response) {
-        const customer = await createCustomer(req.body);
+        const customer = await createCustomer(req.body).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer});
     }
 
     public async updateCustomer(req: express.Request, res: express.Response) {
-        const customer = await updateCustomer(req.params.id, req.body);
+        const customer = await updateCustomer(req.params.id, req.body).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer});
     }
 
     public async getCustomer(req: express.Request, res: express.Response) {
-        const customer = await getCustomer(req.params.id);
+        const customer = await getCustomer(req.params.id).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer });
     }
 
     public async getCustomerProducts(req: express.Request, res: express.Response) {
-        const customer = await getCustomerProducts(req.params.id);
+        const customer = await getCustomerProducts(req.params.id).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer });
     }
 }

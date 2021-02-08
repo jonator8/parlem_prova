@@ -32,22 +32,22 @@ class CustomerProductController {
     }
 
     public async deleteCustomerProduct(req: express.Request, res: express.Response) {
-        const customer = await deleteCustomerProduct(req.params.id);
+        const customer = await deleteCustomerProduct(req.params.id).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer});
     }
 
     public async createCustomerProduct(req: express.Request, res: express.Response) {
-        const customer = await createCustomerProduct(req.body);
+        const customer = await createCustomerProduct(req.body).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer});
     }
 
     public async updateCustomerProduct(req: express.Request, res: express.Response) {
-        const customer = await updateCustomerProduct(req.params.id, req.body);
+        const customer = await updateCustomerProduct(req.params.id, req.body).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer});
     }
 
     public async getCustomerProduct(req: express.Request, res: express.Response) {
-        const customer = await getCustomerProduct(req.params.id);
+        const customer = await getCustomerProduct(req.params.id).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: customer });
     }
 }

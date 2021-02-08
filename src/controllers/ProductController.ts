@@ -32,7 +32,7 @@ class ProductController {
     }
 
     public async deleteProduct(req: express.Request, res: express.Response) {
-        const product = await deleteProduct(req.params.id);
+        const product = await deleteProduct(req.params.id).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: product});
     }
 
@@ -43,12 +43,12 @@ class ProductController {
     }
 
     public async updateProduct(req: express.Request, res: express.Response) {
-        const product = await updateProduct(req.params.id, req.body);
+        const product = await updateProduct(req.params.id, req.body).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: product});
     }
 
     public async getProduct(req: express.Request, res: express.Response) {
-        const product = await getProduct(req.params.id);
+        const product = await getProduct(req.params.id).catch((err) => res.status(400).json({message: err}));
         return res.status(200).json({data: product });
     }
 }
