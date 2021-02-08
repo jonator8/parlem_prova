@@ -37,7 +37,7 @@ PORT=3000
 ```
 
 ### 6. Server is running
-The url is `http://localhost/api/v1/...` 
+The url is `http://localhost:3000/api/v1/...` 
 
 | Type | Url | Description |
 | :--- | :--- | :--- |
